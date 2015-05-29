@@ -1,1 +1,9 @@
 c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\ProjektEkonometria.exe.config
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\ProjektEkonometria.exe
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\ProjektEkonometria.pdb
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.csprojResolveAssemblyReference.cache
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.Form1.resources
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.Properties.Resources.resources
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.csproj.GenerateResource.Cache
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.exe
+c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.pdb
