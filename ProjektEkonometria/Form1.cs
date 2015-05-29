@@ -36,7 +36,7 @@ namespace ProjektEkonometria
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path +
                                       @";Extended Properties=""Excel 8.0;HDR=YES;""";
             OleDbConnection conn = new OleDbConnection(connectionString);
-            string strCmd = "select * from [Arkusz1$A1:A27]";
+            string strCmd = "select * from [Arkusz1$A1:A28]";
             OleDbCommand cmd = new OleDbCommand(strCmd, conn);
             try
             {
@@ -65,7 +65,7 @@ namespace ProjektEkonometria
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path +
                                       @";Extended Properties=""Excel 8.0;HDR=YES;""";
             OleDbConnection conn = new OleDbConnection(connectionString);
-            string strCmd = "select * from [Arkusz1$A1:D27]";
+            string strCmd = "select * from [Arkusz1$A0:D28]";
             OleDbCommand cmd = new OleDbCommand(strCmd,conn);
             try
             {
@@ -98,7 +98,22 @@ namespace ProjektEkonometria
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //int[,] 
+            string[] x1 = new string[26];
+            string[] x2 = new string[26];
+            string[] x3 = new string[26];
+            string[] x4 = new string[26];
+            string[] y = new string[26];
+            
+            for (int i = 0; i <26 ; i++)
+            {
+
+                x1[i] = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                x2[i] = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                x3[i] = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                x4[i] = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                y[i] = dataGridView2.Rows[i].Cells[0].Value.ToString();
+                
+            }
         }
 
         
