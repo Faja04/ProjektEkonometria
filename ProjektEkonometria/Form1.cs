@@ -160,25 +160,50 @@ namespace ProjektEkonometria
             double sumX2 = 0;
             double sumX3 = 0;
             double sumX4 = 0;
+
             //(wartosc-srednia)*(wartosc-srednia)
             double[] resultYxX1 = new double[26];
+            double[] resultYxX2 = new double[26];
+            double[] resultYxX3 = new double[26];
+            double[] resultYxX4 = new double[26];
             //suma E
-            double sumYX = 0;
+            double sumYX1 = 0;
+            double sumYX2 = 0;
+            double sumYX3 = 0;
+            double sumYX4 = 0;
             //potega valueMeanY,valueMeanX1
             double[] valueMeanY2 = new double[26];
             double[] valueMeanX12 = new double[26];
+            double[] valueMeanX22 = new double[26];
+            double[] valueMeanX32 = new double[26];
+            double[] valueMeanX42 = new double[26];
             //suma wartosci potegi valueMeanY,summValueMeanX12
             double summValueMeanY2 = 0;
             double summValueMeanX12 = 0;
+            double summValueMeanX22 = 0;
+            double summValueMeanX32 = 0;
+            double summValueMeanX42 = 0;
             //pierwiastek
             double rootY = 0;
             double rootX1 = 0;
+            double rootX2 = 0;
+            double rootX3 = 0;
+            double rootX4 = 0;
             //mnozenie pierwiastków
             double rootmultiX1Y = 0;
+            double rootmultiX2Y = 0;
+            double rootmultiX3Y = 0;
+            double rootmultiX4Y = 0;
             //suma E / pomnożone pierwiastki
             double X1YdividerootmultiX1Y = 0;
+            double X2YdividerootmultiX2Y = 0;
+            double X3YdividerootmultiX3Y = 0;
+            double X4YdividerootmultiX4Y = 0;
+            //tablica korelacji dla Y
+            string[] correlationArray = new string[4];
             for (int i = 0; i < 26; i++)
             {
+                //wartość- średnia dla wszystich
                 valueMeanY[i] = resultY[i] - meanY;
                 valueMeanX1[i] = resultX1[i] - meanX1;
                 valueMeanX2[i] = resultX2[i] - meanX2;
@@ -190,23 +215,56 @@ namespace ProjektEkonometria
                 sumX2 = valueMeanX2[i] + sumX2;
                 sumX3 = valueMeanX3[i] + sumX3;
                 sumX4 = valueMeanX4[i] + sumX4;
-
+                //mnożenie y z każdym
                 resultYxX1[i] = valueMeanY[i] * valueMeanX1[i];
-                //teraz obliczyc sume E
-                sumYX += resultYxX1[i];
+                resultYxX2[i] = valueMeanY[i] * valueMeanX2[i];
+                resultYxX3[i] = valueMeanY[i] * valueMeanX3[i];
+                resultYxX4[i] = valueMeanY[i] * valueMeanX4[i];
+                //teraz obliczyc sume E - suma dla mnożenia
+                sumYX1 += resultYxX1[i];
+                sumYX2 += resultYxX2[i];
+                sumYX3 += resultYxX3[i];
+                sumYX4 += resultYxX4[i];
                 //potega C i D oddzielnie
                 valueMeanY2[i] = valueMeanY[i] * valueMeanY[i];
                 valueMeanX12[i] = valueMeanX1[i] * valueMeanX1[i];
+                valueMeanX22[i] = valueMeanX2[i] * valueMeanX2[i];
+                valueMeanX32[i] = valueMeanX3[i] * valueMeanX3[i];
+                valueMeanX42[i] = valueMeanX4[i] * valueMeanX4[i];
                 //suma poteg C i D oddzielnie
                 summValueMeanY2 += valueMeanY2[i];
                 summValueMeanX12 += valueMeanX12[i];
+                summValueMeanX22 += valueMeanX22[i];
+                summValueMeanX32 += valueMeanX32[i];
+                summValueMeanX42 += valueMeanX42[i];
                 //pierwiastek sumy poteg C i D oddzielnie
                 rootY = Math.Sqrt(summValueMeanY2);
                 rootX1 = Math.Sqrt(summValueMeanX12);
+                rootX2 = Math.Sqrt(summValueMeanX22);
+                rootX3 = Math.Sqrt(summValueMeanX32);
+                rootX4 = Math.Sqrt(summValueMeanX42);
                 //mnożenie pierwiastków
                 rootmultiX1Y = rootX1 * rootY;
-                //suma E / pomnożone pierwiastki
-                X1YdividerootmultiX1Y=sumYX / rootmultiX1Y;
+                rootmultiX2Y = rootX2 * rootY;
+                rootmultiX3Y = rootX3 * rootY;
+                rootmultiX4Y = rootX4 * rootY;
+                //suma E / pomnożone pierwiastki - współczynnik korelacji dla y,x
+                X1YdividerootmultiX1Y = sumYX1 / rootmultiX1Y;
+                X2YdividerootmultiX2Y = sumYX2 / rootmultiX2Y;
+                X3YdividerootmultiX3Y = sumYX3 / rootmultiX3Y;
+                X4YdividerootmultiX4Y = sumYX4 / rootmultiX4Y;
+                
+            }
+            //wypełnie tablicy z danym korelacji
+
+            correlationArray[0] = X1YdividerootmultiX1Y.ToString("0.00");
+            correlationArray[1] = X2YdividerootmultiX2Y.ToString("0.00");
+            correlationArray[2] = X3YdividerootmultiX3Y.ToString("0.00");
+            correlationArray[3] = X4YdividerootmultiX4Y.ToString("0.00");
+
+            for (int i = 0; i < 4; i++)
+            {
+                dataGridView4.Rows.Add(correlationArray[i]);
             }
 
 
