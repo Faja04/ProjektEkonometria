@@ -34,13 +34,15 @@
             this.getExelX = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.X1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.X2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.X3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.X4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rStar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.Y1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -106,7 +108,6 @@
             // 
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.AllowUserToOrderColumns = true;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.X1,
@@ -119,6 +120,34 @@
             this.dataGridView3.Size = new System.Drawing.Size(338, 126);
             this.dataGridView3.TabIndex = 6;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
+            // X1
+            // 
+            this.X1.HeaderText = "X1";
+            this.X1.Name = "X1";
+            this.X1.ReadOnly = true;
+            this.X1.Width = 70;
+            // 
+            // X2
+            // 
+            this.X2.HeaderText = "X2";
+            this.X2.Name = "X2";
+            this.X2.ReadOnly = true;
+            this.X2.Width = 70;
+            // 
+            // X3
+            // 
+            this.X3.HeaderText = "X3";
+            this.X3.Name = "X3";
+            this.X3.ReadOnly = true;
+            this.X3.Width = 70;
+            // 
+            // X4
+            // 
+            this.X4.HeaderText = "X4";
+            this.X4.Name = "X4";
+            this.X4.ReadOnly = true;
+            this.X4.Width = 70;
             // 
             // dataGridView4
             // 
@@ -153,37 +182,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // X1
+            // rStar
             // 
-            this.X1.HeaderText = "X1";
-            this.X1.Name = "X1";
-            this.X1.ReadOnly = true;
-            this.X1.Width = 70;
+            this.rStar.Location = new System.Drawing.Point(630, 23);
+            this.rStar.Name = "rStar";
+            this.rStar.Size = new System.Drawing.Size(56, 20);
+            this.rStar.TabIndex = 10;
             // 
-            // X2
+            // label3
             // 
-            this.X2.HeaderText = "X2";
-            this.X2.Name = "X2";
-            this.X2.ReadOnly = true;
-            this.X2.Width = 70;
-            // 
-            // X3
-            // 
-            this.X3.HeaderText = "X3";
-            this.X3.Name = "X3";
-            this.X3.ReadOnly = true;
-            this.X3.Width = 70;
-            // 
-            // X4
-            // 
-            this.X4.HeaderText = "X4";
-            this.X4.Name = "X4";
-            this.X4.ReadOnly = true;
-            this.X4.Width = 70;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(510, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "wartość krytyczna r* = ";
             // 
             // Y1
             // 
-            this.Y1.HeaderText = "Y1";
+            this.Y1.HeaderText = "R0";
             this.Y1.Name = "Y1";
             this.Y1.ReadOnly = true;
             this.Y1.Width = 70;
@@ -193,6 +210,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(875, 451);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rStar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView4);
@@ -228,6 +247,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn X2;
         private System.Windows.Forms.DataGridViewTextBoxColumn X3;
         private System.Windows.Forms.DataGridViewTextBoxColumn X4;
+        private System.Windows.Forms.TextBox rStar;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y1;
 
 

@@ -454,10 +454,145 @@ namespace ProjektEkonometria
             {
                 dataGridView4.Rows.Add(correlationArrayY[i]);
                 dataGridView3.Rows.Add(correlationArrayX1[i], correlationArrayX2[i], correlationArrayX3[i], correlationArrayX4[i]);
+                
+            }
 
+            string[,] r = new string[4,4];
+
+            for (int i = 0; i < 4; i++)
+            {
+                r[i, 0] = correlationArrayX1[i];
+                r[i, 1] = correlationArrayX2[i];
+                r[i, 2] = correlationArrayX3[i];
+                r[i, 3] = correlationArrayX4[i]; 
+            }
+
+            //konwersja tablicy wielowymiarowej R0 do double
+            double[,] rD = new double[4,4];
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    rD[i, j] = Convert.ToDouble(r[i, j]); 
+                }
 
             }
 
+            //poszukiwnie najwyzszej wartosci dla wiersza X1
+            double[] highestInRow = new double[4];
+            double rt = 1;
+
+            highestInRow[0] = rD[0, 0];
+            for (int i = 0; i < 4; i++){
+                if (highestInRow[0] >= rt)
+                {
+                    highestInRow[0] = rD[i, 0];
+                }
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (highestInRow[0] < rD[i + 1, 0])
+                {
+                    highestInRow[0] = rD[i + 1, 0];
+                }
+            }
+
+            //poszukiwnie najwyzszej wartosci dla wiersza X2
+            highestInRow[1] = rD[0, 1];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (highestInRow[1] < rD[i + 1, 1])
+                {
+                    if (rD[i+1,1] >= rt)
+                    {
+                        i = i + 1;
+                    }
+                    highestInRow[1] = rD[i + 1, 1];
+                }
+            }
+
+            //poszukiwnie najwyzszej wartosci dla wiersza X3
+            highestInRow[2] = rD[0, 2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (highestInRow[2] < rD[i + 1, 2])
+                {
+                    if (rD[i + 1, 2] >= rt)
+                    {
+                        i = i + 1;
+                    }
+                    highestInRow[2] = rD[i + 1, 2];
+                }
+            }
+
+            //poszukiwnie najwyzszej wartosci dla wiersza X4
+            highestInRow[3] = rD[0, 3];
+            for (int i = 0; i < 2; i++)
+            {
+                if (highestInRow[3] < rD[i + 1, 3])
+                {
+                    highestInRow[3] = rD[i + 1, 3];
+                }
+            }
+            //poszukiwnie najwyzszej wartosci dla kolumny highestInRow
+
+            double highestInCol = highestInRow[0];
+            for (int i = 0; i < 3; i++)
+            {
+                if (highestInCol > highestInRow[i + 1])
+                {
+                    highestInCol = highestInRow[i + 1];
+                }
+            }
+            string highestInColSting;
+            highestInColSting = Convert.ToString(highestInCol);
+            rStar.Text = highestInColSting;
+
+
+            //zerowanie wartosci dla rD mniejszych lub równych od rStar(wartości krytycznej)
+            //highestInCol
+            //    rD
+            double absRD = 0;
+            double[,] zeroRD = new double[4,4];
+            absRD = Math.Abs(highestInCol);
+
+            zeroRD = rD;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    double test=0;
+                    test = zeroRD[i,j];
+                    test = Math.Abs(test);
+                    if (test <= absRD)
+                    {
+                        zeroRD[i, j] = 0;
+                    }
+                }
+
+            }
+  
+
+            //Transponowanie macierzy X'
+            double[,] resultTab = new double[24, 24];
+            double[,] resultTran = new double[24, 24];
+            
+            for (int i = 0; i < 24; i++)
+            {
+                resultTab[i, 0] = resultX1[i];
+                resultTab[i, 1] = resultX2[i];
+                resultTab[i, 2] = resultX3[i];
+                resultTab[i, 3] = resultX4[i];
+
+                resultTran[0, i] = resultTab[i, 0];
+                resultTran[1, i] = resultTab[i, 1];
+                resultTran[2, i] = resultTab[i, 2];
+                resultTran[3, i] = resultTab[i, 3];
+
+            }
 
 
         }
