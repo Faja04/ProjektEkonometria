@@ -39,11 +39,11 @@
             this.X3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.X4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.Y1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.rStar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.Y1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -162,6 +162,13 @@
             this.dataGridView4.Size = new System.Drawing.Size(137, 126);
             this.dataGridView4.TabIndex = 7;
             // 
+            // Y1
+            // 
+            this.Y1.HeaderText = "R0";
+            this.Y1.Name = "Y1";
+            this.Y1.ReadOnly = true;
+            this.Y1.Width = 70;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -186,6 +193,7 @@
             // 
             this.rStar.Location = new System.Drawing.Point(630, 23);
             this.rStar.Name = "rStar";
+            this.rStar.ReadOnly = true;
             this.rStar.Size = new System.Drawing.Size(56, 20);
             this.rStar.TabIndex = 10;
             // 
@@ -197,13 +205,6 @@
             this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 11;
             this.label3.Text = "wartość krytyczna r* = ";
-            // 
-            // Y1
-            // 
-            this.Y1.HeaderText = "R0";
-            this.Y1.Name = "Y1";
-            this.Y1.ReadOnly = true;
-            this.Y1.Width = 70;
             // 
             // Form1
             // 
