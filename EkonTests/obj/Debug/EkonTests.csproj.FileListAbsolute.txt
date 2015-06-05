@@ -3,3 +3,5 @@ C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTes
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTests\obj\Debug\EkonTests.csprojResolveAssemblyReference.cache
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTests\obj\Debug\EkonTests.dll
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTests\obj\Debug\EkonTests.pdb
+C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTests\bin\Debug\EkonMethods.dll
+C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonTests\bin\Debug\EkonMethods.pdb

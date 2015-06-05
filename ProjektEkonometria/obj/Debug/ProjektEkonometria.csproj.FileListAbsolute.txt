@@ -7,3 +7,4 @@ c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\Projekt
 c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.csproj.GenerateResource.Cache
 c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.exe
 c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.pdb
+C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\alglibnet2.dll

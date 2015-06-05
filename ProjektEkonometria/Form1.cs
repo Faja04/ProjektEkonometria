@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace ProjektEkonometria
 {
@@ -17,6 +20,7 @@ namespace ProjektEkonometria
     {
         DataSet ds = new DataSet();
         DataSet ds2 = new DataSet();
+        public Application eA;
         OleDbDataAdapter adapter = new OleDbDataAdapter();
 
         public Form1()
@@ -28,7 +32,40 @@ namespace ProjektEkonometria
         {
          
         }
+
+        private static double[,] AddLineToArray(double[,] array, int rowNumber, double[,] resultArray)
+        {
+            var nowaDlugosc = resultArray.GetLength(0);
+            if (nowaDlugosc == 0)
+            {
+                nowaDlugosc = 1;
+            }
+            else
+            {
+                nowaDlugosc++;
+            }
+
+            var szerokoscTablicy = array.GetLength(1);
+
+            var newResultArray = new double[nowaDlugosc, szerokoscTablicy];
+
+            for (int i = 0; i < nowaDlugosc - 1; i++)
+            {
+                for (int j = 0; j < szerokoscTablicy; j++)
+                {
+                    newResultArray[i, j] = resultArray[i, j];
+                }
+            }
+
+            for (int i = 0; i < szerokoscTablicy; i++)
+            {
+                newResultArray[nowaDlugosc - 1, i] = array[rowNumber, i];
+            }
+
+            return newResultArray;
+        }
         
+        //////////////////////////////////////////
         private void getExelY_Click(object sender, EventArgs e)
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -57,6 +94,7 @@ namespace ProjektEkonometria
             }
 
         }
+        public virtual MathNet.Numerics.LinearAlgebra.Double.Matrix Inverse();
 
         private void getExelX_Click(object sender, EventArgs e)
         {
@@ -613,34 +651,124 @@ namespace ProjektEkonometria
                 {
                     resultTab[i, 2] = resultX3[i];
                     resultTab[i, 3] = resultX4[i];
-                }
-                
+                }         
 
             }
-            //double[,] resultTabD = new double[27,27];
+            //////////////////////////////////////////////
 
-            //for (int i = 0; i < 27; i++)
-            //{
-            //    for (int j = 0; j < 27; j++)
-            //    {
-            //        if (resultTab[i, j] != 0)
-            //        {
-            //            resultTabD[i, j] = resultTab[i, j];
-            //        }
-            //    }
-            //}
+            double[,] oneTab = new double[1, 27];
+            for (int i = 0; i < 27; i++)
+            {
+                oneTab[0, i] = 1;
+            }
 
-            for (int i = 0; i < 27; i++)//transponuj
+            //dodanie do tablicy x wchodzących do modelu tablicy jedynek
+            var summOneArray = new double[27, 27];
+            for (int i = 0; i < 27; i++)
             {
                 for (int j = 0; j < 27; j++)
                 {
-                    resultTran[j, i] = resultTab[i, j];                    
+                    summOneArray[i, j] = resultTab[i, j];
+                }
+            }
+            for (int i = 0; i < 27; i++)
+            {
+                summOneArray[i, 4] = oneTab[0, i];
+            }
+
+            //transponuj
+            for (int i = 0; i < 27; i++)
+            {
+                for (int j = 0; j < 27; j++)
+                {
+                    resultTran[j, i] = summOneArray[i, j];                    
                 }
             }
 
+            //kasowanie zer z transponowanej
+            var array = resultTran;
 
+            var dlugoscTablicy = array.GetLength(0);
+            var szerokoscTablicy = array.GetLength(1);
+
+            var resultArray = new double[0, szerokoscTablicy];
+
+            bool isOnlyZero = true;
+
+            for (int i = 0; i < dlugoscTablicy; i++)
+            {
+                for (int j = 0; j < szerokoscTablicy; j++)
+                {
+                    if (array[i, j] != 0)
+                    {
+                        isOnlyZero = false;
+                        break;
+                    }
+                }
+
+                if (!isOnlyZero)
+                {
+                    resultArray = AddLineToArray(array, i, resultArray);
+                }
+
+                isOnlyZero = true;
+            }
+            //transponuj do normalnej
+
+            double[,] testtest = new double[27,3];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 27; j++)
+                {
+                    testtest[j, i] = resultArray[i, j];
+                    
+                }
+            }
+
+            //transponowana * y
+            double[,] transRazyY = new double[27, 27];
+            double[,] y2w = new double[1, 27];
+
+            for (int i = 0; i < 27; i++)
+            {
+                y2w[0, i] = resultY[i];
+            }
+
+            for (int i = 0; i < 27; i++)
+            {
+                for (int k = 0; k < 27; k++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        transRazyY[i, k] += y2w[0, k] * testtest[k,j];//wynik macierzy transponowanej * y macierz 27*27
+                    }
+                }
+            }
+            //trans*nie trans 
+            double[,] m1m2 = new double[27, 27];
+            for (int i = 0; i < 27; i++)
+            {
+                for (int k = 0; k < 27; k++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        m1m2[i, k] += testtest[i, j] * resultArray[j, k];//wynik maceirz transponowana * nie transponowana
+                    }
+                }
+            }
+
+            //odwracanie macierzy m1m2
+
+            double[,] onesMatrix = new double[27, 27];
+            for (int i = 0; i < 1; i++)
+            {                
+                for (int j = 0; j < 27; j++)
+                {
+                    onesMatrix[i,j] = 1;
+                    i = i + 1;
+                }
+            }
         }
-
         
     }
 }
