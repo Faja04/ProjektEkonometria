@@ -36,7 +36,7 @@ namespace ProjektEkonometria
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path +
                                       @";Extended Properties=""Excel 8.0;HDR=YES;""";
             OleDbConnection conn = new OleDbConnection(connectionString);
-            string strCmd = "select * from [Arkusz1$A0:A28]";
+            string strCmd = "select * from [Arkusz1$A1:A28]";
             OleDbCommand cmd = new OleDbCommand(strCmd, conn);
             try
             {
@@ -64,14 +64,14 @@ namespace ProjektEkonometria
             path = Path.Combine(path, "daneX.ods");
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + path +
                                       @";Extended Properties=""Excel 8.0;HDR=YES;""";
-            OleDbConnection conn2 = new OleDbConnection(connectionString);
-            string strCmd2 = "select * from [Arkusz1$A0:D28]";
-            OleDbCommand cmd2 = new OleDbCommand(strCmd2,conn2);
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            string strCmd = "select * from [Arkusz1$A0:D28]";
+            OleDbCommand cmd = new OleDbCommand(strCmd,conn);
             try
             {
-                conn2.Open();
+                conn.Open();
                 ds.Clear();
-                adapter.SelectCommand = cmd2;
+                adapter.SelectCommand = cmd;
                 adapter.Fill(ds);
                 dataGridView1.DataSource = ds.Tables[0];
             }
@@ -82,7 +82,7 @@ namespace ProjektEkonometria
             }
             finally
             {
-                conn2.Close();
+                conn.Close();
             }
         }
 
@@ -98,17 +98,17 @@ namespace ProjektEkonometria
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] x1 = new string[27];
-            string[] x2 = new string[27];
-            string[] x3 = new string[27];
-            string[] x4 = new string[27];
-            string[] y = new string[27];
+            string[] x1 = new string[26];
+            string[] x2 = new string[26];
+            string[] x3 = new string[26];
+            string[] x4 = new string[26];
+            string[] y = new string[26];
 
-            double[] resultY = new double[27];
-            double[] resultX1 = new double[27];
-            double[] resultX2 = new double[27];
-            double[] resultX3 = new double[27];
-            double[] resultX4 = new double[27];
+            double[] resultY = new double[26];
+            double[] resultX1 = new double[26];
+            double[] resultX2 = new double[26];
+            double[] resultX3 = new double[26];
+            double[] resultX4 = new double[26];
 
             double meanY = 0;
             double meanX1 = 0;
@@ -116,7 +116,7 @@ namespace ProjektEkonometria
             double meanX3 = 0;
             double meanX4 = 0;
                         
-            for (int i = 0; i <27 ; i++)
+            for (int i = 0; i <26 ; i++)
             {
                 x1[i] = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 x2[i] = dataGridView1.Rows[i].Cells[1].Value.ToString();
@@ -148,11 +148,11 @@ namespace ProjektEkonometria
             meanX4 = meanX4 / resultX4.Length;
 
             //obliczenie wartość - różnica
-            double[] valueMeanY = new double[27];
-            double[] valueMeanX1 = new double[27];
-            double[] valueMeanX2 = new double[27];
-            double[] valueMeanX3 = new double[27];
-            double[] valueMeanX4 = new double[27];
+            double[] valueMeanY = new double[26];
+            double[] valueMeanX1 = new double[26];
+            double[] valueMeanX2 = new double[26];
+            double[] valueMeanX3 = new double[26];
+            double[] valueMeanX4 = new double[26];
 
             double sumY = 0;
             double sumX1 = 0;
@@ -161,30 +161,30 @@ namespace ProjektEkonometria
             double sumX4 = 0;
 
             //(wartosc-srednia)*(wartosc-srednia)
-            double[] resultYxX1 = new double[27];
-            double[] resultYxX2 = new double[27];
-            double[] resultYxX3 = new double[27];
-            double[] resultYxX4 = new double[27];
+            double[] resultYxX1 = new double[26];
+            double[] resultYxX2 = new double[26];
+            double[] resultYxX3 = new double[26];
+            double[] resultYxX4 = new double[26];
             //X1:X
-            double[] resultX1xX1 = new double[27];
-            double[] resultX1xX2 = new double[27];
-            double[] resultX1xX3 = new double[27];
-            double[] resultX1xX4 = new double[27];
+            double[] resultX1xX1 = new double[26];
+            double[] resultX1xX2 = new double[26];
+            double[] resultX1xX3 = new double[26];
+            double[] resultX1xX4 = new double[26];
             //X2:X
-            double[] resultX2xX1 = new double[27];
-            double[] resultX2xX2 = new double[27];
-            double[] resultX2xX3 = new double[27];
-            double[] resultX2xX4 = new double[27];
+            double[] resultX2xX1 = new double[26];
+            double[] resultX2xX2 = new double[26];
+            double[] resultX2xX3 = new double[26];
+            double[] resultX2xX4 = new double[26];
             //X3:X
-            double[] resultX3xX1 = new double[27];
-            double[] resultX3xX2 = new double[27];
-            double[] resultX3xX3 = new double[27];
-            double[] resultX3xX4 = new double[27];
+            double[] resultX3xX1 = new double[26];
+            double[] resultX3xX2 = new double[26];
+            double[] resultX3xX3 = new double[26];
+            double[] resultX3xX4 = new double[26];
             //X4:X
-            double[] resultX4xX1 = new double[27];
-            double[] resultX4xX2 = new double[27];
-            double[] resultX4xX3 = new double[27];
-            double[] resultX4xX4 = new double[27];
+            double[] resultX4xX1 = new double[26];
+            double[] resultX4xX2 = new double[26];
+            double[] resultX4xX3 = new double[26];
+            double[] resultX4xX4 = new double[26];
             ///////////////////////////
             //suma Y x X1:4
             double sumYX1 = 0;
@@ -212,11 +212,11 @@ namespace ProjektEkonometria
             double sumX4X3 = 0;
             double sumX4X4 = 0;
             //potega valueMeanY,valueMeanX1
-            double[] valueMeanY2 = new double[27];
-            double[] valueMeanX12 = new double[27];
-            double[] valueMeanX22 = new double[27];
-            double[] valueMeanX32 = new double[27];
-            double[] valueMeanX42 = new double[27];
+            double[] valueMeanY2 = new double[26];
+            double[] valueMeanX12 = new double[26];
+            double[] valueMeanX22 = new double[26];
+            double[] valueMeanX32 = new double[26];
+            double[] valueMeanX42 = new double[26];
             //suma wartosci potegi valueMeanY,summValueMeanX12
             double summValueMeanY2 = 0;
             double summValueMeanX12 = 0;
@@ -286,7 +286,7 @@ namespace ProjektEkonometria
             string[] correlationArrayX3 = new string[4];
             string[] correlationArrayX4 = new string[4];
 
-            for (int i = 0; i < 27; i++)
+            for (int i = 0; i < 26; i++)
             {
                 //wartość- średnia dla wszystich
                 valueMeanY[i] = resultY[i] - meanY;
@@ -424,30 +424,30 @@ namespace ProjektEkonometria
             }
             //wypełnie tablicy z danym korelacji
 
-            correlationArrayY[0] = X1YdividerootmultiX1Y.ToString("0.000");
-            correlationArrayY[1] = X2YdividerootmultiX2Y.ToString("0.000");
-            correlationArrayY[2] = X3YdividerootmultiX3Y.ToString("0.000");
-            correlationArrayY[3] = X4YdividerootmultiX4Y.ToString("0.000");
+            correlationArrayY[0] = X1YdividerootmultiX1Y.ToString("0.00");
+            correlationArrayY[1] = X2YdividerootmultiX2Y.ToString("0.00");
+            correlationArrayY[2] = X3YdividerootmultiX3Y.ToString("0.00");
+            correlationArrayY[3] = X4YdividerootmultiX4Y.ToString("0.00");
 
-            correlationArrayX1[0] = X1X1dividerootmultiX1X1.ToString("0.000");
-            correlationArrayX1[1] = X2X1dividerootmultiX2X1.ToString("0.000");
-            correlationArrayX1[2] = X3X1dividerootmultiX3X1.ToString("0.000");
-            correlationArrayX1[3] = X4X1dividerootmultiX4X1.ToString("0.000");
+            correlationArrayX1[0] = X1X1dividerootmultiX1X1.ToString("0.00");
+            correlationArrayX1[1] = X2X1dividerootmultiX2X1.ToString("0.00");
+            correlationArrayX1[2] = X3X1dividerootmultiX3X1.ToString("0.00");
+            correlationArrayX1[3] = X4X1dividerootmultiX4X1.ToString("0.00");
 
-            correlationArrayX2[0] = X1X2dividerootmultiX1X2.ToString("0.000");
-            correlationArrayX2[1] = X2X2dividerootmultiX2X2.ToString("0.000");
-            correlationArrayX2[2] = X3X2dividerootmultiX3X2.ToString("0.000");
-            correlationArrayX2[3] = X4X2dividerootmultiX4X2.ToString("0.000");
+            correlationArrayX2[0] = X1X2dividerootmultiX1X2.ToString("0.00");
+            correlationArrayX2[1] = X2X2dividerootmultiX2X2.ToString("0.00");
+            correlationArrayX2[2] = X3X2dividerootmultiX3X2.ToString("0.00");
+            correlationArrayX2[3] = X4X2dividerootmultiX4X2.ToString("0.00");
 
-            correlationArrayX3[0] = X1X3dividerootmultiX1X3.ToString("0.000");
-            correlationArrayX3[1] = X2X3dividerootmultiX2X3.ToString("0.000");
-            correlationArrayX3[2] = X3X3dividerootmultiX3X3.ToString("0.000");
-            correlationArrayX3[3] = X4X3dividerootmultiX4X3.ToString("0.000");
+            correlationArrayX3[0] = X1X3dividerootmultiX1X3.ToString("0.00");
+            correlationArrayX3[1] = X2X3dividerootmultiX2X3.ToString("0.00");
+            correlationArrayX3[2] = X3X3dividerootmultiX3X3.ToString("0.00");
+            correlationArrayX3[3] = X4X3dividerootmultiX4X3.ToString("0.00");
 
-            correlationArrayX4[0] = X1X4dividerootmultiX1X4.ToString("0.000");
-            correlationArrayX4[1] = X2X4dividerootmultiX2X4.ToString("0.000");
-            correlationArrayX4[2] = X3X4dividerootmultiX3X4.ToString("0.000");
-            correlationArrayX4[3] = X4X4dividerootmultiX4X4.ToString("0.000");
+            correlationArrayX4[0] = X1X4dividerootmultiX1X4.ToString("0.00");
+            correlationArrayX4[1] = X2X4dividerootmultiX2X4.ToString("0.00");
+            correlationArrayX4[2] = X3X4dividerootmultiX3X4.ToString("0.00");
+            correlationArrayX4[3] = X4X4dividerootmultiX4X4.ToString("0.00");
 
                         
             for (int i = 0; i < 4; i++)
@@ -554,7 +554,7 @@ namespace ProjektEkonometria
 
             //zerowanie wartosci dla rD mniejszych lub równych od rStar(wartości krytycznej)
             //highestInCol
-            //rD
+            //    rD
             double absRD = 0;
             double[,] zeroRD = new double[4,4];
             absRD = Math.Abs(highestInCol);
@@ -567,7 +567,6 @@ namespace ProjektEkonometria
                     double test=0;
                     test = zeroRD[i,j];
                     test = Math.Abs(test);
-
                     if (test <= absRD)
                     {
                         zeroRD[i, j] = 0;
@@ -575,67 +574,24 @@ namespace ProjektEkonometria
                 }
 
             }
-
-            //sprawdzenie który z x należy do modelu
-            int[] count = new int[4];
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if (zeroRD[i, j] != 0)
-                    {
-                        count[i] += 1;
-                    }
-                }
-
-            }
+  
 
             //Transponowanie macierzy X'
-            double[,] resultTab = new double[27, 27];
-            double[,] resultTran = new double[27, 27];
+            double[,] resultTab = new double[24, 24];
+            double[,] resultTran = new double[24, 24];
             
-            for (int i = 0; i < 27; i++)//tworzenie tablicy wielowymiarowej
+            for (int i = 0; i < 24; i++)
             {
-                int k = 0;
-                if (count[k] > count[k + 1])
-                {
-                    resultTab[i, 0] = resultX1[i];
-                }
-                k += 1; 
+                resultTab[i, 0] = resultX1[i];
+                resultTab[i, 1] = resultX2[i];
+                resultTab[i, 2] = resultX3[i];
+                resultTab[i, 3] = resultX4[i];
 
-                if (count[k] > count[k + 1])
-                {
-                 resultTab[i, 1] = resultX2[i];
-                }
-                k += 1;
+                resultTran[0, i] = resultTab[i, 0];
+                resultTran[1, i] = resultTab[i, 1];
+                resultTran[2, i] = resultTab[i, 2];
+                resultTran[3, i] = resultTab[i, 3];
 
-                if (count[k] >= count[k + 1])
-                {
-                    resultTab[i, 2] = resultX3[i];
-                    resultTab[i, 3] = resultX4[i];
-                }
-                
-
-            }
-            //double[,] resultTabD = new double[27,27];
-
-            //for (int i = 0; i < 27; i++)
-            //{
-            //    for (int j = 0; j < 27; j++)
-            //    {
-            //        if (resultTab[i, j] != 0)
-            //        {
-            //            resultTabD[i, j] = resultTab[i, j];
-            //        }
-            //    }
-            //}
-
-            for (int i = 0; i < 27; i++)//transponuj
-            {
-                for (int j = 0; j < 27; j++)
-                {
-                    resultTran[j, i] = resultTab[i, j];                    
-                }
             }
 
 
