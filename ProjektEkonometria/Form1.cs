@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -726,18 +724,18 @@ namespace ProjektEkonometria
                 y2w[0, i] = resultY[i];
             }
             
-            CSML.Matrix y2wM = new CSML.Matrix(y2w);
-            CSML.Matrix testtestM = new CSML.Matrix(testtest);
-            CSML.Matrix y2wMtesttestM = new CSML.Matrix();
+            Matrix y2wM = new Matrix(y2w);
+            Matrix testtestM = new Matrix(testtest);
+            Matrix y2wMtesttestM = new Matrix();
             y2wMtesttestM = y2wM * testtestM;//wynik macierzy transponowanej * y macierz 27*27
 
-            CSML.Matrix resultArrayM = new CSML.Matrix(resultArray);
-            CSML.Matrix testtestMresultArrayM = new CSML.Matrix();
+            Matrix resultArrayM = new Matrix(resultArray);
+            Matrix testtestMresultArrayM = new Matrix();
             testtestMresultArrayM = resultArrayM * testtestM;//wynik maceirz transponowana * nie transponowana
             
-            CSML.Matrix Minv = testtestMresultArrayM.InverseLeverrier();//macierz odwrotna
+            Matrix Minv = testtestMresultArrayM.InverseLeverrier();//macierz odwrotna
 
-            CSML.Matrix resultTransYMinv = new CSML.Matrix();
+            Matrix resultTransYMinv = new Matrix();
             resultTransYMinv = y2wMtesttestM * Minv;
 
         }
