@@ -764,7 +764,7 @@ namespace ProjektEkonometria
                     }
                 }
             }
-            //kasowanie 0
+
             Matrix dataResultXW0 = new Matrix(dataResultX);
             for (int i = 1; i < 3; i++)
             {
@@ -774,12 +774,12 @@ namespace ProjektEkonometria
                     i = i - 1;
                 }
             }
-            
-            //mnozenie dla wyniku y'
+            double[,] resultTransYMinv2 = new double[1, 27];
             Matrix dataResultXW0ToGriid = new Matrix(dataResultX);
-
+            for (int i = 0; i < 27; i++)
+                resultTransYMinv2[0,i] = resultTransYMinv;
             for (int i = 1; i < 2; i++)
-            {
+            {       
                 for (int j = 1; j < 28; j++)
                 {       
                 dataResultXW0ToGriid=dataResultXW0[i,j] * resultTransYMinv[i];
