@@ -776,19 +776,28 @@ namespace ProjektEkonometria
             }
             
             //mnozenie dla wyniku y'
-            Matrix dataResultXW0ToGriid = new Matrix(dataResultX);
-
-            for (int i = 1; i < 2; i++)
+            Matrix dataResultXW0ToGriid = new Matrix();
+            Matrix dataResultXW0ToGriidSuma = new Matrix();
+            Matrix wartosc = new Matrix(resultTransYMinv[3]);
+            for (int i = 1; i < 3; i++)
             {
                 for (int j = 1; j < 28; j++)
-                {       
-                dataResultXW0ToGriid=dataResultXW0[i,j] * resultTransYMinv[i];
+                {
+                    dataResultXW0ToGriid[i,j]=dataResultXW0[i,j] * resultTransYMinv[i];
+                }
+
+            }
+            for (int i = 1; i < 3; i++)
+            {
+                for (int j = 1; j < 28; j++)
+                {
+                    dataResultXW0ToGriidSuma[i, j] = dataResultXW0ToGriid[i, j];
                 }
 
             }
             for (int i = 1; i < 28; i++)
             {
-                dataGridView5.Rows.Add(dataResultXW0ToGriid[i]);
+                dataGridView5.Rows.Add(dataResultXW0ToGriid[1, i]);
             }
         }
     }
