@@ -2,4 +2,3 @@ C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonMet
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonMethods\bin\Debug\EkonMethods.pdb
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonMethods\obj\Debug\EkonMethods.dll
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonMethods\obj\Debug\EkonMethods.pdb
-C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\EkonMethods\bin\Debug\alglibnet2.dll

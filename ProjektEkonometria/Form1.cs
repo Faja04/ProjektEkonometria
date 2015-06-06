@@ -11,8 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
+using CSML;
 
 namespace ProjektEkonometria
 {
@@ -94,8 +93,6 @@ namespace ProjektEkonometria
             }
 
         }
-        public virtual MathNet.Numerics.LinearAlgebra.Double.Matrix Inverse();
-
         private void getExelX_Click(object sender, EventArgs e)
         {
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -768,6 +765,14 @@ namespace ProjektEkonometria
                     i = i + 1;
                 }
             }
+
+            
+            CSML.Matrix M = new  CSML.Matrix(m1m2);
+            CSML.Matrix Minv = M.Inverse();
+
+
+
+
         }
         
     }
