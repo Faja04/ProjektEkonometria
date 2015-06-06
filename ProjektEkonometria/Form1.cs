@@ -684,12 +684,9 @@ namespace ProjektEkonometria
 
             //kasowanie zer z transponowanej
             var array = resultTran;
-
             var dlugoscTablicy = array.GetLength(0);
             var szerokoscTablicy = array.GetLength(1);
-
             var resultArray = new double[0, szerokoscTablicy];
-
             bool isOnlyZero = true;
 
             for (int i = 0; i < dlugoscTablicy; i++)
@@ -723,55 +720,25 @@ namespace ProjektEkonometria
             }
 
             //transponowana * y
-            double[,] transRazyY = new double[27, 27];
             double[,] y2w = new double[1, 27];
-
             for (int i = 0; i < 27; i++)
             {
                 y2w[0, i] = resultY[i];
             }
-
-            for (int i = 0; i < 27; i++)
-            {
-                for (int k = 0; k < 27; k++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        transRazyY[i, k] += y2w[0, k] * testtest[k,j];//wynik macierzy transponowanej * y macierz 27*27
-                    }
-                }
-            }
-            //trans*nie trans 
-            double[,] m1m2 = new double[27, 27];
-            for (int i = 0; i < 27; i++)
-            {
-                for (int k = 0; k < 27; k++)
-                {
-                    for (int j = 0; j < 3; j++)
-                    {
-                        m1m2[i, k] += testtest[i, j] * resultArray[j, k];//wynik maceirz transponowana * nie transponowana
-                    }
-                }
-            }
-
-            //odwracanie macierzy m1m2
-
-            double[,] onesMatrix = new double[27, 27];
-            for (int i = 0; i < 1; i++)
-            {                
-                for (int j = 0; j < 27; j++)
-                {
-                    onesMatrix[i,j] = 1;
-                    i = i + 1;
-                }
-            }
-
             
-            CSML.Matrix M = new  CSML.Matrix(m1m2);
-            CSML.Matrix Minv = M.Inverse();
+            CSML.Matrix y2wM = new CSML.Matrix(y2w);
+            CSML.Matrix testtestM = new CSML.Matrix(testtest);
+            CSML.Matrix y2wMtesttestM = new CSML.Matrix();
+            y2wMtesttestM = y2wM * testtestM;//wynik macierzy transponowanej * y macierz 27*27
 
+            CSML.Matrix resultArrayM = new CSML.Matrix(resultArray);
+            CSML.Matrix testtestMresultArrayM = new CSML.Matrix();
+            testtestMresultArrayM = resultArrayM * testtestM;//wynik maceirz transponowana * nie transponowana
+            
+            CSML.Matrix Minv = testtestMresultArrayM.InverseLeverrier();//macierz odwrotna
 
-
+            CSML.Matrix resultTransYMinv = new CSML.Matrix();
+            resultTransYMinv = y2wMtesttestM * Minv;
 
         }
         

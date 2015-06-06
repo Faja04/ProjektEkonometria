@@ -9,3 +9,4 @@ c:\users\roland\documents\visual studio 2013\Projects\ProjektEkonometria\Projekt
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\MathNet.Numerics.dll
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\MathNet.Numerics.xml
 C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\bin\Debug\CSML.dll
+C:\Users\Roland\documents\visual studio 2013\Projects\ProjektEkonometria\ProjektEkonometria\obj\Debug\ProjektEkonometria.csprojResolveAssemblyReference.cache
