@@ -51,7 +51,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.odchylenie = new System.Windows.Forms.TextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
@@ -284,13 +284,13 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Odchylenie standardowe składnika resztowego Su";
             // 
-            // textBox4
+            // odchylenie
             // 
-            this.textBox4.Location = new System.Drawing.Point(545, 198);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(182, 20);
-            this.textBox4.TabIndex = 19;
+            this.odchylenie.Location = new System.Drawing.Point(545, 198);
+            this.odchylenie.Name = "odchylenie";
+            this.odchylenie.ReadOnly = true;
+            this.odchylenie.Size = new System.Drawing.Size(182, 20);
+            this.odchylenie.TabIndex = 19;
             // 
             // dataGridView5
             // 
@@ -368,7 +368,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dataGridView6);
             this.Controls.Add(this.dataGridView5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.odchylenie);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
@@ -425,7 +425,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox odchylenie;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;

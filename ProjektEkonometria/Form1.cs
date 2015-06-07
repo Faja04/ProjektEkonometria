@@ -824,12 +824,12 @@ namespace ProjektEkonometria
             }
             for (int i = 0; i < 27; i++)
             {
-                r2[i] = r2[i] * r2[i];//y'-y
+                r2[i] = r2[i] * r2[i];//(y'-y)^2
             }
 
             for (int i = 0; i < 27; i++)
             {
-                sumr2 = sumr2 + r2[i];//suma y' -y
+                sumr2 = sumr2 + r2[i];//suma (y' -y)r2
             }
 
             double[] resultYmeanY = new double[27];
@@ -849,8 +849,16 @@ namespace ProjektEkonometria
             }
             double divsumr2resultYmeanY2summ = 0;
             divsumr2resultYmeanY2summ = sumr2 / resultYmeanY2summ;
-            r2text.Text = divsumr2resultYmeanY2summ.ToString("0.00");
+            r2text.Text = divsumr2resultYmeanY2summ.ToString("0.0000");
+            
+            //odchylenie standardowe  = (1/(27-2(liczb zmiennych)-1)  *  suma(y-y')^2 *)^1/2 
+            double odchyStand = 0;
+            double a = 1;
+            double b = 24;
+            odchyStand = Math.Sqrt((a/b) * sumr2);
+            odchylenie.Text = odchyStand.ToString("0.0000");
             //współczynnik zmiennosci loswej
+
 
         }
     }
