@@ -779,6 +779,10 @@ namespace ProjektEkonometria
             Matrix dataResultXW0ToGriid = new Matrix();
             Matrix dataResultXW0ToGriidSuma = new Matrix();
             Matrix wartosc = new Matrix(resultTransYMinv[3]);
+            double[] warotsc12 = new double[27];
+            for (int i = 0; i <27 ; i++)
+            warotsc12[i] = resultTransYMinv[3].Re;
+
             for (int i = 1; i < 3; i++)
             {
                 for (int j = 1; j < 28; j++)
@@ -787,18 +791,29 @@ namespace ProjektEkonometria
                 }
 
             }
-            for (int i = 1; i < 3; i++)
+            for (int i = 1; i <2 ; i++)
             {
                 for (int j = 1; j < 28; j++)
                 {
-                    dataResultXW0ToGriidSuma[i, j] = dataResultXW0ToGriid[i, j];
+                    dataResultXW0ToGriidSuma[i, j] = dataResultXW0ToGriid[i, j] + dataResultXW0ToGriid[i+1, j];
                 }
 
             }
-            for (int i = 1; i < 28; i++)
+            double[] dataResultXW0ToGriidSumaDouble = new double[27];
+            for (int i = 0; i < 27; i++)
+                dataResultXW0ToGriidSumaDouble[i] = dataResultXW0ToGriidSuma[i+1].Re;
+
+            for (int i = 0; i < 27; i++) 
             {
-                dataGridView5.Rows.Add(dataResultXW0ToGriid[1, i]);
+                dataResultXW0ToGriidSumaDouble[i] = dataResultXW0ToGriidSumaDouble[i] + warotsc12[i];
             }
+
+            for (int i = 0; i < 27; i++)
+            {
+                dataGridView5.Rows.Add(dataResultXW0ToGriidSumaDouble[i]);
+            }
+            //wyswietlenie wzoru modelu
+            rowMod.Text = "Y' = " + resultTransYMinv[1] + "*X + " + resultTransYMinv[2] + "*X + " + resultTransYMinv[3];
         }
     }
 }

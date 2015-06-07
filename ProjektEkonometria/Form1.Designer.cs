@@ -44,7 +44,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.rStar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rowMod = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -53,13 +53,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -224,13 +224,13 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Wartość krytyczna r*";
             // 
-            // textBox1
+            // rowMod
             // 
-            this.textBox1.Location = new System.Drawing.Point(545, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(182, 20);
-            this.textBox1.TabIndex = 12;
+            this.rowMod.Location = new System.Drawing.Point(545, 81);
+            this.rowMod.Name = "rowMod";
+            this.rowMod.ReadOnly = true;
+            this.rowMod.Size = new System.Drawing.Size(182, 20);
+            this.rowMod.TabIndex = 12;
             // 
             // label4
             // 
@@ -305,6 +305,12 @@
             this.dataGridView5.Size = new System.Drawing.Size(143, 211);
             this.dataGridView5.TabIndex = 20;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Y\'";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
             // dataGridView6
             // 
             this.dataGridView6.AllowUserToAddRows = false;
@@ -354,12 +360,6 @@
             this.label8.TabIndex = 22;
             this.label8.Text = "Błędy średnie szacunku parametru D(a)";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Y\'";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,7 +375,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.rowMod);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.rStar);
             this.Controls.Add(this.button1);
@@ -418,7 +418,7 @@
         private System.Windows.Forms.TextBox rStar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox rowMod;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
