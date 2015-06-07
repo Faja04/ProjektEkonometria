@@ -813,7 +813,7 @@ namespace ProjektEkonometria
                 dataGridView5.Rows.Add(dataResultXW0ToGriidSumaDouble[i]);
             }
             //wyswietlenie wzoru modelu
-            rowMod.Text = "Y' = " + resultTransYMinv[1] + "*X + " + resultTransYMinv[2] + "*X + " + resultTransYMinv[3];
+            rowMod.Text = "Y' = " + resultTransYMinv[1].ToString() + "*X3 + " + resultTransYMinv[2].ToString() + "*X4 + " + resultTransYMinv[3].ToString();
             
             //współczynnik determinacji R^2
             double[] r2 = new double[27];
@@ -854,12 +854,40 @@ namespace ProjektEkonometria
             //odchylenie standardowe  = (1/(27-2(liczb zmiennych)-1)  *  suma(y-y')^2 *)^1/2 
             double odchyStand = 0;
             double a = 1;
-            double b = 24;
+            double b = 27 - ((resultArray.Length/27)-1)-1;
             odchyStand = Math.Sqrt((a/b) * sumr2);
             odchylenie.Text = odchyStand.ToString("0.0000");
             //współczynnik zmiennosci loswej
 
+            //Błędy średnie szacunku parametru D(a) pierwiastek(sumr2/24)   Minv - macierz 3x3
 
+            double zmiennosc = 0;
+            double mac1 = 0;
+            double[,] mac = new double[3, 3];
+            double sto = 100;
+            zmiennosc = ((Math.Sqrt(sumr2 / b)) / meanY)*sto; //zmiennosc
+            wspLos.Text = zmiennosc.ToString();
+
+            mac1 = sumr2 / b;
+            for (int i = 1; i < 4; i++)
+            {
+                for (int j = 1; j < 4; j++)
+                {
+                    mac[i-1, j-1] = Minv[i, j].Re;
+                }
+            }
+
+            double[] da = new double[3];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    da[j] = Minv[i+1, j+1].Re;
+                    i = i + 1;
+                }
+            }
+
+            daDGV.Rows.Add(Math.Sqrt(da[0]), Math.Sqrt(da[1]), Math.Sqrt(da[2]));
         }
     }
 }

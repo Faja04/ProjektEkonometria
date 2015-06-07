@@ -48,24 +48,23 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.r2text = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.odchylenie = new System.Windows.Forms.TextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.daDGV = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.wspLos = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -209,7 +208,7 @@
             // 
             // rStar
             // 
-            this.rStar.Location = new System.Drawing.Point(545, 42);
+            this.rStar.Location = new System.Drawing.Point(545, 46);
             this.rStar.Name = "rStar";
             this.rStar.ReadOnly = true;
             this.rStar.Size = new System.Drawing.Size(182, 20);
@@ -218,7 +217,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(582, 23);
+            this.label3.Location = new System.Drawing.Point(582, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 13);
             this.label3.TabIndex = 11;
@@ -226,7 +225,7 @@
             // 
             // rowMod
             // 
-            this.rowMod.Location = new System.Drawing.Point(545, 81);
+            this.rowMod.Location = new System.Drawing.Point(545, 85);
             this.rowMod.Name = "rowMod";
             this.rowMod.ReadOnly = true;
             this.rowMod.Size = new System.Drawing.Size(182, 20);
@@ -235,7 +234,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(582, 65);
+            this.label4.Location = new System.Drawing.Point(582, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 13;
@@ -244,7 +243,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(559, 104);
+            this.label5.Location = new System.Drawing.Point(559, 108);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 13);
             this.label5.TabIndex = 14;
@@ -252,33 +251,16 @@
             // 
             // r2text
             // 
-            this.r2text.Location = new System.Drawing.Point(545, 120);
+            this.r2text.Location = new System.Drawing.Point(545, 124);
             this.r2text.Name = "r2text";
             this.r2text.ReadOnly = true;
             this.r2text.Size = new System.Drawing.Size(182, 20);
             this.r2text.TabIndex = 15;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(545, 159);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(182, 20);
-            this.textBox3.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(539, 143);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(177, 13);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Współczynnik zmienności losowej v";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(510, 182);
+            this.label7.Location = new System.Drawing.Point(519, 147);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(247, 13);
             this.label7.TabIndex = 18;
@@ -286,7 +268,7 @@
             // 
             // odchylenie
             // 
-            this.odchylenie.Location = new System.Drawing.Point(545, 198);
+            this.odchylenie.Location = new System.Drawing.Point(545, 163);
             this.odchylenie.Name = "odchylenie";
             this.odchylenie.ReadOnly = true;
             this.odchylenie.Size = new System.Drawing.Size(182, 20);
@@ -311,21 +293,46 @@
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
-            // dataGridView6
+            // daDGV
             // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.daDGV.AllowUserToAddRows = false;
+            this.daDGV.AllowUserToDeleteRows = false;
+            this.daDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.daDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.dataGridView6.Location = new System.Drawing.Point(506, 254);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.ReadOnly = true;
-            this.dataGridView6.Size = new System.Drawing.Size(412, 191);
-            this.dataGridView6.TabIndex = 21;
+            this.dataGridViewTextBoxColumn4});
+            this.daDGV.Location = new System.Drawing.Point(506, 254);
+            this.daDGV.Name = "daDGV";
+            this.daDGV.ReadOnly = true;
+            this.daDGV.Size = new System.Drawing.Size(347, 191);
+            this.daDGV.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(510, 238);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(194, 13);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "Błędy średnie szacunku parametru D(a)";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(548, 184);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(168, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Współczynnik zmienności losowej";
+            // 
+            // wspLos
+            // 
+            this.wspLos.Location = new System.Drawing.Point(545, 200);
+            this.wspLos.Name = "wspLos";
+            this.wspLos.ReadOnly = true;
+            this.wspLos.Size = new System.Drawing.Size(182, 20);
+            this.wspLos.TabIndex = 24;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -345,33 +352,18 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "D(a4)";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(510, 238);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(194, 13);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Błędy średnie szacunku parametru D(a)";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 451);
+            this.Controls.Add(this.wspLos);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView6);
+            this.Controls.Add(this.daDGV);
             this.Controls.Add(this.dataGridView5);
             this.Controls.Add(this.odchylenie);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.r2text);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -394,7 +386,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,18 +414,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox r2text;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox odchylenie;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.DataGridView daDGV;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox wspLos;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 
 
     }
