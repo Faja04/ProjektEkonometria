@@ -47,7 +47,7 @@
             this.rowMod = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.r2text = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -250,13 +250,13 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Współczynnik determinacji R^2";
             // 
-            // textBox2
+            // r2text
             // 
-            this.textBox2.Location = new System.Drawing.Point(545, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(182, 20);
-            this.textBox2.TabIndex = 15;
+            this.r2text.Location = new System.Drawing.Point(545, 120);
+            this.r2text.Name = "r2text";
+            this.r2text.ReadOnly = true;
+            this.r2text.Size = new System.Drawing.Size(182, 20);
+            this.r2text.TabIndex = 15;
             // 
             // textBox3
             // 
@@ -372,7 +372,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.r2text);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.rowMod);
@@ -421,7 +421,7 @@
         private System.Windows.Forms.TextBox rowMod;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox r2text;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

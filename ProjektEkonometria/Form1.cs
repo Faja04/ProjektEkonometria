@@ -814,6 +814,44 @@ namespace ProjektEkonometria
             }
             //wyswietlenie wzoru modelu
             rowMod.Text = "Y' = " + resultTransYMinv[1] + "*X + " + resultTransYMinv[2] + "*X + " + resultTransYMinv[3];
+            
+            //współczynnik determinacji R^2
+            double[] r2 = new double[27];
+            double sumr2 = 0;
+            for (int i = 0; i < 27; i++)
+            {
+                r2[i]=dataResultXW0ToGriidSumaDouble[i] - resultY[i];//y'-y
+            }
+            for (int i = 0; i < 27; i++)
+            {
+                r2[i] = r2[i] * r2[i];//y'-y
+            }
+
+            for (int i = 0; i < 27; i++)
+            {
+                sumr2 = sumr2 + r2[i];//suma y' -y
+            }
+
+            double[] resultYmeanY = new double[27];
+            for (int i = 0; i < 27; i++)
+            {
+                resultYmeanY[i] = resultY[i] - meanY;//Y - srednia Y
+            }
+            double[] resultYmeanY2 = new double[27];
+            for (int i = 0; i < 27; i++)
+            {
+                resultYmeanY2[i] = resultYmeanY[i] * resultYmeanY[i];//(Y - srednia Y)^2
+            }
+            double resultYmeanY2summ = 0;
+            for (int i = 0; i < 27; i++)
+            {
+                resultYmeanY2summ = resultYmeanY2summ + resultYmeanY2[i];//suma tych wartosci(Y - srednia Y)^2
+            }
+            double divsumr2resultYmeanY2summ = 0;
+            divsumr2resultYmeanY2summ = sumr2 / resultYmeanY2summ;
+            r2text.Text = divsumr2resultYmeanY2summ.ToString("0.00");
+            //współczynnik zmiennosci loswej
+
         }
     }
 }
